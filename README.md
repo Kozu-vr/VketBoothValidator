@@ -53,7 +53,7 @@ https://www.v-market.work/
 - シーンを開いた状態でTools＞Vket Booth Validatorから起動します。
 - Base Folderに提出するフォルダを指定してValidateボタンを押すだけです。
   - On/Offブースで提出を申請している人は「For On/Off　Booth」にチェックを入れてください。
-- 検証でNGだったルールはログに[!}がついて出力されます。
+- 検証でNGだったルールはログに[!]がついて出力されます。
 
 - 対応していないルールのチェックは各自でお願いします。
 
