@@ -43,7 +43,7 @@ https://www.v-market.work/
 ## 動作環境
 以下の環境でテストしています。
 - Windows 10
-- Unity 2017.4.15
+- Unity 2017.4.15f1
 - VRCSDK-2018.12.19.17.03
 
 （今のところWindows以外のOSは動作保証外です）
