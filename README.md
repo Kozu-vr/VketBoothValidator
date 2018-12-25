@@ -59,7 +59,7 @@ https://www.v-market.work/
 
 ## インストール
 検証したいブースのシーンがあるプロジェクトに以下のURLからダウンロードしたZipを解凍してUnitypackageをインポートしてください。
-ダウンロード先：
+ダウンロード先：https://github.com/Kozu-vr/VketBoothValidator/releases/
 
 ## ライセンス
 MITライセンスの下でリリースされています。
