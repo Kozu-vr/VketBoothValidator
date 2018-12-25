@@ -34,3 +34,5 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+VketBoothValidatorTest/Assets/VketBoothValidator.meta
+VketBoothValidatorTest/Assets/VketBoothValidator/*
