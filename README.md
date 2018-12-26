@@ -1,4 +1,4 @@
-﻿Vket booth validator ver.2019.3 開発途中版
+﻿Vket booth validator ver.2019.3-beta
 ====
 Vケットのブースが入稿ルールに沿っているかチェックする入稿支援ツール(非公式)です。
 
