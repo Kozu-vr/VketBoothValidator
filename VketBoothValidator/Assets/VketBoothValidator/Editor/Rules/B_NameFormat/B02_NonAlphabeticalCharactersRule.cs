@@ -46,7 +46,7 @@ namespace VketTools
                 }
             }
 
-            AddResultLog("全角文字使用：" + invalidPath.Count);
+            AddResultLog("全角文字使用アセット数：" + invalidPath.Count);
             foreach (string path in invalidPath.ToArray())
             {
                 ResultLog += System.Environment.NewLine + path;
