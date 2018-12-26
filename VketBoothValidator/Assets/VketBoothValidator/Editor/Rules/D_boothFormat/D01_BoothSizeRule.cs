@@ -45,7 +45,7 @@ namespace VketTools
             List<Renderer> allRenderers = new List<Renderer>();
             foreach (Transform tr in allTransforms)
             {
-                if (Utils.isBoothObject(tr))
+                if (Utils.GetInstance().isBoothObject(tr.gameObject))
                 {
                     allRenderers.AddRange(tr.GetComponents<Renderer>());
                 }

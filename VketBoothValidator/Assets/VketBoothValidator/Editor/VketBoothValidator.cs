@@ -133,6 +133,7 @@ namespace VketTools
 
             //Validation
             Options options = new Options(baseFolder, onoffBooth, sceneGuid);
+            Utils.GetInstance().setOptons(options);
             BaseRule[] targetRules = RuleLoader.Load(options);
             int invalidRuleCount = 0;
             foreach (BaseRule rule in targetRules)

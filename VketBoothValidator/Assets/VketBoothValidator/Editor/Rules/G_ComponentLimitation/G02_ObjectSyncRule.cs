@@ -30,7 +30,7 @@ namespace VketTools
             //初期化
             base.Validate();
             //検証ロジック
-            GameObject[] boothObjects = Utils.FindAllObjectsInBooth();
+            GameObject[] boothObjects = Utils.GetInstance().FindAllObjectsInBooth();
             bool dirtFlg = false;
             if (boothObjects != null)
             {

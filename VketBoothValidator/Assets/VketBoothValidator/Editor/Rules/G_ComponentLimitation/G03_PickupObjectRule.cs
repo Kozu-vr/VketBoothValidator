@@ -31,7 +31,7 @@ namespace VketTools
             base.Validate();
             int maxCount = 3;
             //検証ロジック
-            GameObject[] boothObjects = Utils.FindAllObjectsInBooth();
+            GameObject[] boothObjects = Utils.GetInstance().FindAllObjectsInBooth();
             bool findFlg = false;
             int count = 0;
             if (boothObjects != null)
