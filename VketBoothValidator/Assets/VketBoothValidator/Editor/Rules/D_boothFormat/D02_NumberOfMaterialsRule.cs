@@ -72,12 +72,18 @@ namespace VketTools
                 else
                 {
                     string assetPath = AssetDatabase.GetAssetPath(material.GetInstanceID());
-                    if (assetPath.IndexOf(AssetDatabase.GetAssetPath(options.baseFolder)) == -1)
-                    {
-                        AddResultLog("ベースフォルダに含まれないマテリアルを参照しています。");
-                        dirtFlg = true;
+                    if (assetPath == "Resources/unity_builtin_extra") {
+                        AddResultLog("Default-Materialが使用されています。意図した設定ですか？");
                     }
-                    AddResultLog(" " + assetPath);
+                    else
+                    {
+                        if (assetPath.IndexOf(AssetDatabase.GetAssetPath(options.baseFolder)) == -1)
+                        {
+                            AddResultLog("ベースフォルダに含まれないマテリアルを参照しています。");
+                            dirtFlg = true;
+                        }
+                        AddResultLog(" " + assetPath);
+                    }
                 }
             }
             AddResultLog("シーン内マテリアル数：" + dictinctMaterials.Count());
