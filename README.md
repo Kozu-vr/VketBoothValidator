@@ -27,7 +27,7 @@ Vケットのブースが入稿ルールに沿っているかチェックする�
 
 Link:[Vket booth validator入稿ルール対応状況](https://docs.google.com/spreadsheets/d/1yLzcLtusEecXTSqYZu3RZLAwv17coyIo2IJ8L6couw0/edit?usp=sharing)
 
-基準は2018.12.25時点の「バーチャルマーケット２入稿ルール」です。
+基準は2018.12.26更新の「バーチャルマーケット２入稿ルール」です。
 使用前に公式のルールが改訂されていないことを確認してください。
 https://www.v-market.work/
 
