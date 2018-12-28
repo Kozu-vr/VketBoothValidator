@@ -159,7 +159,7 @@ namespace VketTools
         private void OutLog(string txt)
         {
             Debug.Log(txt);
-            validationLog += txt + System.Environment.NewLine;
+            validationLog += System.Environment.NewLine + txt;
         }
 
         private void OutLog(BaseRule rule, bool onlyErrorLog)
@@ -175,7 +175,9 @@ namespace VketTools
                 Debug.Log(rule.RuleName + ":" + rule.ResultLog);
                 if (!onlyErrorLog)
                 {
-                    validationLog += rule.ResultLog + System.Environment.NewLine;
+                    if (rule.ResultLog != "") { 
+                        validationLog += System.Environment.NewLine + rule.ResultLog + System.Environment.NewLine;
+                    }
                 }
             }
 
