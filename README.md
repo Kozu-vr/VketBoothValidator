@@ -75,6 +75,6 @@ Kozu（Twitter：@kozu_vr）
 ツールに関しての問い合わせはTwitterへお願いします。
 
 ## Special thanks（開発・動作テスト協力）
-- がとーしょこら(Twitter: )
+- がとーしょこら(Twitter: @gatosyocora)
 - 小熊猫レッキー(Twitter: @VR_Red_Panda)
 - sunafukin(Twitter: @sunafukin_vrc)
