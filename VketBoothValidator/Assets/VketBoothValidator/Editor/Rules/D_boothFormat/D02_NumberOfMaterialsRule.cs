@@ -77,7 +77,7 @@ namespace VketTools
                     }
                     else
                     {
-                        if (assetPath.IndexOf(AssetDatabase.GetAssetPath(options.baseFolder)) == -1)
+                        if (assetPath.IndexOf(AssetDatabase.GetAssetPath(options.baseFolder)+"/") == -1)
                         {
                             AddResultLog("ベースフォルダに含まれないマテリアルを参照しています。");
                             dirtFlg = true;
