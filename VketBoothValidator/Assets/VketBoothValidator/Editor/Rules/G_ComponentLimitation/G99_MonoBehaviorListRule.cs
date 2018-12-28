@@ -50,8 +50,8 @@ namespace VketTools
                         }
                         if (cmp != null)
                         {
-
-                            AddResultLog(cmp.ToString());
+                            string cmpInfo = string.Format("{0} ({1})", cmp.gameObject.name, cmp.GetType().FullName);
+                            AddResultLog(cmpInfo);
                         }
                         else
                         {
