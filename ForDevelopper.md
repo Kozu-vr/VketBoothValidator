@@ -5,7 +5,8 @@
 １検証ルールが１クラスに対応しているので新しいクラスを作って独自に拡張できます。
 
 # 作り方
-Z99_TemplateRule.csを参考に実装してください。
+以下のテンプレートを参考に実装してください。
+`VketBoothValidator\Editor\Rules\Z99_TemplateRule.cs.template`
 - BaseRuleを継承した新しいクラスを作成する。
 - ruleNameにルール名を設定する。
 - Validateメソッドをオーバーライドして実装する。
