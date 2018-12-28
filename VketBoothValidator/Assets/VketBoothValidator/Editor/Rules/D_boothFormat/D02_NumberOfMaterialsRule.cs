@@ -37,6 +37,7 @@ namespace VketTools
             int maxMaterialCount = 10;
             //検証ロジック
             Scene scene = SceneManager.GetSceneByPath(AssetDatabase.GUIDToAssetPath(options.sceneGuid));
+            bool dirtFlg = false;
             if (!scene.IsValid())
             {
                 AddResultLog("無効なシーンです");
@@ -54,14 +55,22 @@ namespace VketTools
             }
             foreach (Renderer renderer in allRenderers)
             {
-                allMaterials.AddRange(renderer.sharedMaterials);
-                if (renderer.sharedMaterials.Contains(null))
+
+                foreach (Material material in renderer.sharedMaterials)
                 {
-                    AddResultLog("Missingまたは未割当のマテリアルがみつかりました。:" + renderer.gameObject.name);
+                    if (material == null)
+                    {
+                        AddResultLog("Missingまたは未割当のマテリアルがみつかりました。:" + renderer.gameObject.name);
+                        dirtFlg = true;
+                    }
+                    else
+                    {
+                        allMaterials.Add(material);
+                    }
                 }
             }
             IEnumerable<Material> dictinctMaterials = allMaterials.Distinct();
-            bool dirtFlg = false;
+
             AddResultLog("アクティブな使用マテリアル:");
             foreach (Material material in dictinctMaterials)
             {
