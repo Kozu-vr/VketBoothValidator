@@ -42,7 +42,7 @@ namespace VketTools
 
                     foreach (Component cmp in cmps)
                     {
-                        if (cmp != null && cmp.ToString().IndexOf("Pickup") >= 0)
+                        if (cmp != null && cmp.GetType().FullName.IndexOf("_Pickup") >= 0)
                         {
                             if (findFlg == false)
                             {
