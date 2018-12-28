@@ -40,3 +40,6 @@ sysinfo.txt
 
 
 VketBoothValidatorTest/Assets/VketBoothValidator*
+
+#Official prefabs
+VketBoothValidator/Assets/PickupObjectSync*
