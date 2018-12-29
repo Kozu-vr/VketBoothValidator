@@ -6,6 +6,7 @@ using UnityEngine;
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace VketTools
 {
@@ -34,10 +35,11 @@ namespace VketTools
             int expectedCount = 0;
 
             string[] guids1 = AssetDatabase.FindAssets("t:Object", new[] { AssetDatabase.GetAssetPath(options.baseFolder) });
+            IEnumerable<string> dictinctGuids = guids1.Distinct();
             Regex reg = new Regex(@"^[\x21-\x7e ]+$");
             string assetPath;
             List<string> invalidPath = new List<string>();
-            foreach (string guid in guids1)
+            foreach (string guid in dictinctGuids)
             {
                 assetPath = AssetDatabase.GUIDToAssetPath(guid);
                 if (!reg.IsMatch(assetPath))
