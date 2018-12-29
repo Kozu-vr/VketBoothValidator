@@ -3,6 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using System.IO;
 
 namespace VketTools
 {
@@ -81,17 +82,23 @@ namespace VketTools
                 else
                 {
                     string assetPath = AssetDatabase.GetAssetPath(material.GetInstanceID());
-                    if (assetPath == "Resources/unity_builtin_extra") {
+                    if (assetPath == "Resources/unity_builtin_extra")
+                    {
                         AddResultLog("Default-Materialが使用されています。意図した設定ですか？");
                     }
                     else
                     {
-                        if (assetPath.IndexOf(AssetDatabase.GetAssetPath(options.baseFolder)+"/") == -1)
+                        if (assetPath.IndexOf(AssetDatabase.GetAssetPath(options.baseFolder) + "/") == -1)
                         {
                             AddResultLog("ベースフォルダに含まれないマテリアルを参照しています。");
                             dirtFlg = true;
                         }
-                        AddResultLog(" " + assetPath);
+                        string log = assetPath;
+                        if (Path.GetExtension(assetPath).ToLower() == ".fbx")
+                        {
+                            log += string.Format(" ({0})", material.name);
+                        }
+                        AddResultLog(" " + log);
                     }
                 }
             }
