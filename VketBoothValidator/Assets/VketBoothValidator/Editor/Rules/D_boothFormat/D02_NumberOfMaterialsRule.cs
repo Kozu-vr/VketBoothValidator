@@ -3,6 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using System.IO;
 
 namespace VketTools
 {
@@ -91,7 +92,12 @@ namespace VketTools
                             AddResultLog("ベースフォルダに含まれないマテリアルを参照しています。");
                             dirtFlg = true;
                         }
-                        AddResultLog(" " + assetPath);
+                        string log = assetPath;
+                        if (Path.GetExtension(assetPath).ToLower() == ".fbx")
+                        {
+                            log += string.Format(" ({0})", material.name);
+                        }
+                        AddResultLog(" " + log);
                     }
                 }
             }
