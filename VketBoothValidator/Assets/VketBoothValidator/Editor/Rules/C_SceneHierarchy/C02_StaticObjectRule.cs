@@ -43,12 +43,18 @@ namespace VketTools
             bool dirtflg = false;
             List<string> inValidObjectName = new List<string>();
 
-            GameObject[] rootObjects = scene.GetRootGameObjects();
+            GameObject rootBoothObject = Utils.GetInstance().GetRootBoothObject();
             GameObject occluderStatic = null;
             GameObject occludeeStatic = null;
             GameObject dynamic = null;
-            foreach (GameObject go in rootObjects)
+            if (rootBoothObject == null)
             {
+                AddResultLog("ルートオブジェクトがありません。");
+                return SetResult(Result.FAIL);
+            }
+            foreach (Transform child in rootBoothObject.transform)
+            {
+                GameObject go = child.gameObject;
                 switch (go.name)
                 {
                     case "Occluder Static":

@@ -34,6 +34,7 @@ namespace VketTools
             //A
             new UnityVersionRule(options),
             new BaseFolderRule(options),
+            new BoothPrefabRule(options),
             //B
             new NonAlphabeticalCharactersRule(options),
             new FilePathLengthRule(options),

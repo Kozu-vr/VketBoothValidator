@@ -3,6 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using System.IO;
 
 namespace VketTools
 {
@@ -37,6 +38,7 @@ namespace VketTools
             int maxMaterialCount = 10;
             //検証ロジック
             Scene scene = SceneManager.GetSceneByPath(AssetDatabase.GUIDToAssetPath(options.sceneGuid));
+            bool dirtFlg = false;
             if (!scene.IsValid())
             {
                 AddResultLog("無効なシーンです");
@@ -47,21 +49,29 @@ namespace VketTools
             List<Material> allMaterials = new List<Material>();
             foreach (Transform tr in allTransforms)
             {
-                if (Utils.isBoothObject(tr))
+                if (Utils.GetInstance().isBoothObject(tr.gameObject))
                 {
                     allRenderers.AddRange(tr.GetComponents<Renderer>());
                 }
             }
             foreach (Renderer renderer in allRenderers)
             {
-                allMaterials.AddRange(renderer.sharedMaterials);
-                if (renderer.sharedMaterials.Contains(null))
+
+                foreach (Material material in renderer.sharedMaterials)
                 {
-                    AddResultLog("Missingまたは未割当のマテリアルがみつかりました。:" + renderer.gameObject.name);
+                    if (material == null)
+                    {
+                        AddResultLog("Missingまたは未割当のマテリアルがみつかりました。:" + renderer.gameObject.name);
+                        dirtFlg = true;
+                    }
+                    else
+                    {
+                        allMaterials.Add(material);
+                    }
                 }
             }
             IEnumerable<Material> dictinctMaterials = allMaterials.Distinct();
-            bool dirtFlg = false;
+
             AddResultLog("アクティブな使用マテリアル:");
             foreach (Material material in dictinctMaterials)
             {
@@ -72,12 +82,24 @@ namespace VketTools
                 else
                 {
                     string assetPath = AssetDatabase.GetAssetPath(material.GetInstanceID());
-                    if (assetPath.IndexOf(AssetDatabase.GetAssetPath(options.baseFolder)) == -1)
+                    if (assetPath == "Resources/unity_builtin_extra")
                     {
-                        AddResultLog("ベースフォルダに含まれないマテリアルを参照しています。");
-                        dirtFlg = true;
+                        AddResultLog("Default-Materialが使用されています。意図した設定ですか？");
                     }
-                    AddResultLog(" " + assetPath);
+                    else
+                    {
+                        if (assetPath.IndexOf(AssetDatabase.GetAssetPath(options.baseFolder) + "/") == -1)
+                        {
+                            AddResultLog("ベースフォルダに含まれないマテリアルを参照しています。");
+                            dirtFlg = true;
+                        }
+                        string log = assetPath;
+                        if (Path.GetExtension(assetPath).ToLower() == ".fbx")
+                        {
+                            log += string.Format(" ({0})", material.name);
+                        }
+                        AddResultLog(" " + log);
+                    }
                 }
             }
             AddResultLog("シーン内マテリアル数：" + dictinctMaterials.Count());

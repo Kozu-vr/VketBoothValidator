@@ -32,7 +32,7 @@ namespace VketTools
             base.Validate();
 
             //検証ロジック
-            GameObject[] boothObjects = Utils.FindAllObjectsInBooth();
+            GameObject[] boothObjects = Utils.GetInstance().FindAllObjectsInBooth();
             bool findFlg = false;
             bool dirtFlg = false;
             if (boothObjects != null)
@@ -50,8 +50,8 @@ namespace VketTools
                         }
                         if (cmp != null)
                         {
-
-                            AddResultLog(cmp.ToString());
+                            string cmpInfo = string.Format(" {0} ({1})", cmp.gameObject.name, cmp.GetType().FullName);
+                            AddResultLog(cmpInfo);
                         }
                         else
                         {

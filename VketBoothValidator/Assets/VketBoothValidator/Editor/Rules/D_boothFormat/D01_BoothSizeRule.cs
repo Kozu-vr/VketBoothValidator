@@ -45,7 +45,7 @@ namespace VketTools
             List<Renderer> allRenderers = new List<Renderer>();
             foreach (Transform tr in allTransforms)
             {
-                if (Utils.isBoothObject(tr))
+                if (Utils.GetInstance().isBoothObject(tr.gameObject))
                 {
                     allRenderers.AddRange(tr.GetComponents<Renderer>());
                 }
@@ -65,17 +65,17 @@ namespace VketTools
             bool dirtFlg = false;
             if (boothBounds.size.x > maxBoundsSize.x)
             {
-                AddResultLog(string.Format("幅(X)が{0}を超えています。", maxBoundsSize.x));
+                AddResultLog(string.Format("幅(X)が{0}を{1:0.######}超えています。", maxBoundsSize.x, boothBounds.size.x - maxBoundsSize.x));
                 dirtFlg = true;
             }
             if (boothBounds.size.y > maxBoundsSize.y)
             {
-                AddResultLog(string.Format("高さ(Y)が{0}を超えています。", maxBoundsSize.y));
+                AddResultLog(string.Format("高さ(Y)が{0}を{1:0.######}超えています。", maxBoundsSize.y, boothBounds.size.y - maxBoundsSize.y));
                 dirtFlg = true;
             }
             if (boothBounds.size.z > maxBoundsSize.z)
             {
-                AddResultLog(string.Format("奥行(Z)が{0}を超えています。", maxBoundsSize.z));
+                AddResultLog(string.Format("奥行(Z)が{0}を{1:0.######}超えています。", maxBoundsSize.z, boothBounds.size.z - maxBoundsSize.z));
                 dirtFlg = true;
             }
 

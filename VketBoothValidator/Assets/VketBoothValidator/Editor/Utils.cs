@@ -6,34 +6,53 @@ using UnityEditor;
 
 namespace VketTools
 {
-
-    public class Utils
+    /// <summary>
+    ///ユーティリティクラス
+    /// </summary>
+    public sealed class Utils
     {
-        /// <summary>
-        ///引数のTransformオブジェクトがブース内のものか調べる
-        ///ブース内のものはrootがOccluder Static,Occludee Static,Dynamicのいずれかに属する
-        /// </summary>
-        public static bool isBoothObject(Transform tr)
+        private static Utils _singleInstance = new Utils();
+        public Options options { set; get; }
+
+        public static Utils GetInstance()
         {
-            string rootName = tr.root.gameObject.name;
-            return (rootName == "Occluder Static" || rootName == "Occludee Static" || rootName == "Dynamic");
+            return _singleInstance;
+        }
+
+        private Utils()
+        {
+        }
+
+        public void setOptons(Options opt)
+        {
+            options = opt;
         }
 
         /// <summary>
         ///引数のTransformオブジェクトがブース内のものか調べる
-        ///ブース内のものはrootがOccluder Static,Occludee Static,Dynamicのいずれかに属する
+        ///ブース内のものはbaseFolderと同じ名前のルートオブジェクトを持つ
         /// </summary>
-        public static bool isBoothObject(GameObject go)
+        public bool isBoothObject(GameObject go)
         {
+            if (options == null)
+            {
+                return false;
+            }
             string rootName = go.transform.root.gameObject.name;
-            return (rootName == "Occluder Static" || rootName == "Occludee Static" || rootName == "Dynamic");
+            return (rootName == options.baseFolder.name);
         }
 
         /// <summary>
-        /// シーン内のルートオブジェクトのうち、ブースに含まれるオブジェクトの配列を返す
+        /// シーン内のルートオブジェクトのうち、ブースに含まれるオブジェクトを返す
         /// </summary>
-        public static GameObject[] getRootBoothObjects(string sceneGuid)
+        public GameObject GetRootBoothObject()
         {
+            if (options == null)
+            {
+                return null;
+            }
+            string sceneGuid = options.sceneGuid;
+            string baseFolderName = options.baseFolder.name;
             Scene scene = SceneManager.GetSceneByPath(AssetDatabase.GUIDToAssetPath(sceneGuid));
             if (!scene.IsValid())
             {
@@ -41,21 +60,21 @@ namespace VketTools
             }
 
             GameObject[] rootObjects = scene.GetRootGameObjects();
-            List<GameObject> boothRootObject = new List<GameObject>();
+            GameObject boothRootObject = null;
             foreach (GameObject go in rootObjects)
             {
-                if (go.name == "Occluder Static" || go.name == "Occludee Static" || go.name == "Dynamic")
+                if (go.name == baseFolderName)
                 {
-                    boothRootObject.Add(go);
+                    boothRootObject = go;
                 }
             }
-            return boothRootObject.ToArray();
+            return boothRootObject;
         }
 
         /// <summary>
         /// ブースに含まれるすべてのオブジェクトを検索して返す
         /// </summary>
-        public static GameObject[] FindAllObjectsInBooth()
+        public GameObject[] FindAllObjectsInBooth()
         {
             GameObject[] objects = Resources.FindObjectsOfTypeAll(typeof(GameObject)) as GameObject[];
             List<GameObject> boothObjects = new List<GameObject>();
@@ -68,7 +87,5 @@ namespace VketTools
             }
             return boothObjects.ToArray();
         }
-
     }
-
 }

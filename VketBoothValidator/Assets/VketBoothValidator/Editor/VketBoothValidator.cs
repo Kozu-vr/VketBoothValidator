@@ -23,7 +23,7 @@ namespace VketTools
     public class VketBoothValidator : EditorWindow
     {
         //Valiables
-        private string version = "2019.3 Alpha";
+        private string version = "2019.3 Beta";
         private string validationLog;
         private Vector2 scroll;
         private bool onoffBooth;
@@ -133,6 +133,7 @@ namespace VketTools
 
             //Validation
             Options options = new Options(baseFolder, onoffBooth, sceneGuid);
+            Utils.GetInstance().setOptons(options);
             BaseRule[] targetRules = RuleLoader.Load(options);
             int invalidRuleCount = 0;
             foreach (BaseRule rule in targetRules)
@@ -158,7 +159,7 @@ namespace VketTools
         private void OutLog(string txt)
         {
             Debug.Log(txt);
-            validationLog += txt + System.Environment.NewLine;
+            validationLog += System.Environment.NewLine + txt;
         }
 
         private void OutLog(BaseRule rule, bool onlyErrorLog)
@@ -174,7 +175,9 @@ namespace VketTools
                 Debug.Log(rule.RuleName + ":" + rule.ResultLog);
                 if (!onlyErrorLog)
                 {
-                    validationLog += rule.ResultLog + System.Environment.NewLine;
+                    if (rule.ResultLog != "") { 
+                        validationLog += System.Environment.NewLine + rule.ResultLog + System.Environment.NewLine;
+                    }
                 }
             }
 

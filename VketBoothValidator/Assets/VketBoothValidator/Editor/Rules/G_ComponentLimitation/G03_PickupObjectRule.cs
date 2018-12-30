@@ -31,7 +31,7 @@ namespace VketTools
             base.Validate();
             int maxCount = 3;
             //検証ロジック
-            GameObject[] boothObjects = Utils.FindAllObjectsInBooth();
+            GameObject[] boothObjects = Utils.GetInstance().FindAllObjectsInBooth();
             bool findFlg = false;
             int count = 0;
             if (boothObjects != null)
@@ -42,7 +42,7 @@ namespace VketTools
 
                     foreach (Component cmp in cmps)
                     {
-                        if (cmp != null && cmp.ToString().IndexOf("Pickup") >= 0)
+                        if (cmp != null && cmp.GetType().FullName.IndexOf("_Pickup") >= 0)
                         {
                             if (findFlg == false)
                             {

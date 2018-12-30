@@ -44,7 +44,7 @@ namespace VketTools
                 AddResultLog("ベースフォルダがAssets直下にありません。");
             }
             //Chck folder name fomart
-            Regex regName = new Regex(@".+_.+");
+            Regex regName = new Regex(@"[^_]+_[^_]+");
             if (!regName.IsMatch(folderName))
             {
                 invalidPath.Add(assetPath);

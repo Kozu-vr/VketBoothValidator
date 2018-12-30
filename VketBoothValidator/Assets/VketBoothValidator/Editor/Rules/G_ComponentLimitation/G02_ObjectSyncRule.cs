@@ -30,7 +30,7 @@ namespace VketTools
             //初期化
             base.Validate();
             //検証ロジック
-            GameObject[] boothObjects = Utils.FindAllObjectsInBooth();
+            GameObject[] boothObjects = Utils.GetInstance().FindAllObjectsInBooth();
             bool dirtFlg = false;
             if (boothObjects != null)
             {
@@ -40,7 +40,7 @@ namespace VketTools
 
                     foreach (Component cmp in cmps)
                     {
-                        if (cmp != null && cmp.ToString().IndexOf("ObjectSync") >= 0 && cmp.gameObject.activeInHierarchy == false)
+                        if (cmp != null && cmp.GetType().FullName.IndexOf("_ObjectSync") >= 0 && cmp.gameObject.activeInHierarchy == false)
                         {
                             dirtFlg = true;
                             AddResultLog("ブース内に非表示のObjetSyncがあります");
