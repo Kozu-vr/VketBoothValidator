@@ -51,6 +51,8 @@ Occluder Static, Occludee Static, Dynamicの３つのEmptyオブジェクトを�
   - VRC_Pickupは最大3つまで
 
 ### 非対応ルール
+下記はツールでは検証できません。
+[ツールが検証できないルールのチェック方法](https://github.com/Kozu-vr/VketBoothValidator/wiki)を参考にチェックしてください。
 - 提出用UnityPackageの作成は検証の対象外です。不要な依存ファイルを含めないよう注意してください。
 - ペデスタルアバターに関する規定は検証対象外です。
 - ワールドアップロード時のサイズが10MB以内かは検証しません。
