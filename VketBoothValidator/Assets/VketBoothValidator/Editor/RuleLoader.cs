@@ -37,6 +37,7 @@ namespace VketTools
             new BoothPrefabRule(options),
             //B
             new NonAlphabeticalCharactersRule(options),
+            new FilenameEndWithTildeRule(options),
             new FilePathLengthRule(options),
             //C
             new ObjectHierarchyRule(options),
