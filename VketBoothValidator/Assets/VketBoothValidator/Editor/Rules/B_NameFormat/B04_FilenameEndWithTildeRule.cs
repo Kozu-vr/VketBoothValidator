@@ -41,7 +41,8 @@ namespace VketTools
             foreach (string guid in dictinctGuids)
             {
                 assetPath = AssetDatabase.GUIDToAssetPath(guid);
-                if (Path.GetFileNameWithoutExtension(assetPath).EndsWith(prohibitedCharacter))
+                if (Path.GetFileName(assetPath).EndsWith(prohibitedCharacter) ||
+                    Path.GetFileNameWithoutExtension(assetPath).EndsWith(prohibitedCharacter))
                 {
                     invalidPath.Add(assetPath);
                 }
