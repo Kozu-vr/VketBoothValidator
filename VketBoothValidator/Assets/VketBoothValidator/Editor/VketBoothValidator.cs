@@ -23,7 +23,7 @@ namespace VketTools
     public class VketBoothValidator : EditorWindow
     {
         //Valiables
-        private string version = "2019.3 Beta";
+        private string version = "2019.3a";
         private string validationLog;
         private Vector2 scroll;
         private bool onoffBooth;
