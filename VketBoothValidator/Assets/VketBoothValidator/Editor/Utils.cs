@@ -30,7 +30,7 @@ namespace VketTools
 
         /// <summary>
         ///引数のTransformオブジェクトがブース内のものか調べる
-        ///ブース内のものはbaseFolderと同じ名前のルートオブジェクトを持つ
+        ///ブース内のものはbaseFolderと同じ名前のルートオブジェクトを持ち、シーンにロードされている。
         /// </summary>
         public bool isBoothObject(GameObject go)
         {
@@ -39,7 +39,9 @@ namespace VketTools
                 return false;
             }
             string rootName = go.transform.root.gameObject.name;
-            return (rootName == options.baseFolder.name);
+            bool isSameName = rootName == options.baseFolder.name;
+            bool isInScence = AssetDatabase.GUIDToAssetPath(options.sceneGuid) == go.scene.path;
+            return (isSameName && isInScence);
         }
 
         /// <summary>
