@@ -36,7 +36,6 @@ namespace VketTools
             bool dirtFlg = false;
             if (boothObjects != null)
             {
-                //併用コンポーネントの検証
                 foreach (GameObject obj in boothObjects)
                 {
                     Animator[] animators = obj.GetComponents<UnityEngine.Animator>();
@@ -45,10 +44,10 @@ namespace VketTools
                         if (findFlg == false)
                         {
                             findFlg = true;
-                            AddResultLog("ブース内のAnimator：");
+                            AddResultLog("ブース内のAnimator,Animation：");
                         }
                         AddResultLog(string.Format(" {0}", obj.name));
-
+                        //併用コンポーネントの検証
                         Component[] cmps = obj.GetComponents(typeof(MonoBehaviour));
                         foreach (Component cmp in cmps)
                         {
@@ -63,6 +62,7 @@ namespace VketTools
                                 AddResultLog("  AnimatorとVRC_ObjectSyncpは同一オブジェクトで併用できません。");
                             }
                         }
+
                     }
                     //Animatorの「../」使用検証
                     foreach (var clip in AnimationUtility.GetAnimationClips(obj))
@@ -74,6 +74,24 @@ namespace VketTools
                             {
                                 dirtFlg = true;
                                 AddResultLog("  Animationのパスに「../」は使用できません。");
+                            }
+                        }
+                    }
+                    //Animationの「../」検証
+                    Animation[] animations = obj.GetComponents<Animation>();
+                    if (animations.Length > 0)
+                    {
+                        AddResultLog(string.Format(" {0}", obj.name));
+                        foreach (Animation anim in animations)
+                        {
+                            foreach (var binding in AnimationUtility.GetCurveBindings(anim.clip))
+                            {
+                                var curve = AnimationUtility.GetEditorCurve(anim.clip, binding);
+                                if (binding.path.StartsWith("../"))
+                                {
+                                    dirtFlg = true;
+                                    AddResultLog("  Animationのパスに「../」は使用できません。");
+                                }
                             }
                         }
                     }
