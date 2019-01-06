@@ -7,7 +7,7 @@ namespace VketTools
 {
     /// <summary>
     /// G.Component規定
-    /// 04.RigidBody がIs Kinematic、Collision DetectionがDiscreteであることを検証。
+    /// 04.Rigidbody がIs Kinematic、Collision DetectionがDiscreteであることを検証。
     /// </summary>
     public class RigidbodyRule : BaseRule
     {
