@@ -52,12 +52,12 @@ namespace VketTools
                             AddResultLog(string.Format(" {0}(is Kinematic:{1}, {2})", cmp.gameObject.name, cmp.isKinematic, cmp.collisionDetectionMode));
                             if (cmp.isKinematic == false)
                             {
-                                AddResultLog("is KinematicではないRigidbodyがあります。運営に相談済みの場合はこのメッセージを無視してください。");
+                                AddResultLog("is KinematicではないRigidbodyです。運営に相談済みの場合はこのメッセージを無視してください。");
                                 dirtFlg = true;
                             }
                             if (cmp.collisionDetectionMode != CollisionDetectionMode.Discrete)
                             {
-                                AddResultLog("CollisionDetectionがDiscreteでないRigidbodyがあります。");
+                                AddResultLog("CollisionDetectionがDiscreteでないRigidbodyです。");
                                 dirtFlg = true;
                             }
                         }
