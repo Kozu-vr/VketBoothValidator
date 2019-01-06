@@ -50,6 +50,7 @@ namespace VketTools
             new MonoBehaviorListRule(options),
             new ObjectSyncRule(options),
             new PickupObjectRule(options),
+            new RigidbodyRule(options),
             new LightRule(options)
              };
             return rules.Concat(commonRules).ToArray();
