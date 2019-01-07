@@ -80,7 +80,7 @@ namespace VketTools
             }
 
             //検証結果を設定して返す(正常：Result.SUCESS 異常：Result.FAIL)
-            return SetResult(dirtFlg ? Result.FAIL : Result.SUCCESS);
+            return SetResult(!dirtFlg ? Result.SUCCESS : Result.FAIL);
         }
     }
 }
