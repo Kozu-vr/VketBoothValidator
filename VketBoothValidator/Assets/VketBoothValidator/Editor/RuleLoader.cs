@@ -51,6 +51,7 @@ namespace VketTools
             new ObjectSyncRule(options),
             new PickupObjectRule(options),
             new RigidbodyRule(options),
+            new JointRule(options),
             new LightRule(options),
             new AnimatorRule(options)
              };
