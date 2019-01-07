@@ -38,8 +38,9 @@ namespace VketTools
             {
                 foreach (GameObject obj in boothObjects)
                 {
-                    Animator[] animators = obj.GetComponents<UnityEngine.Animator>();
-                    if (animators.Length > 0)
+                    //AnimationClipの「../」使用検証
+                    AnimationClip[] clips = AnimationUtility.GetAnimationClips(obj);
+                    if (clips.Length > 0)
                     {
                         if (findFlg == false)
                         {
@@ -47,6 +48,23 @@ namespace VketTools
                             AddResultLog("ブース内のAnimator,Animation：");
                         }
                         AddResultLog(string.Format(" {0}", obj.name));
+                        foreach (var clip in clips)
+                        {
+                            foreach (var binding in AnimationUtility.GetCurveBindings(clip))
+                            {
+                                var curve = AnimationUtility.GetEditorCurve(clip, binding);
+                                if (binding.path.StartsWith("../"))
+                                {
+                                    dirtFlg = true;
+                                    AddResultLog("  Animationのパスに「../」は使用できません。");
+                                }
+                            }
+                        }
+                    }
+
+                    Animator[] animators = obj.GetComponents<UnityEngine.Animator>();
+                    if (animators.Length > 0)
+                    {
                         //併用コンポーネントの検証
                         Component[] cmps = obj.GetComponents(typeof(MonoBehaviour));
                         foreach (Component cmp in cmps)
@@ -63,37 +81,6 @@ namespace VketTools
                             }
                         }
 
-                    }
-                    //Animatorの「../」使用検証
-                    foreach (var clip in AnimationUtility.GetAnimationClips(obj))
-                    {
-                        foreach (var binding in AnimationUtility.GetCurveBindings(clip))
-                        {
-                            var curve = AnimationUtility.GetEditorCurve(clip, binding);
-                            if (binding.path.StartsWith("../"))
-                            {
-                                dirtFlg = true;
-                                AddResultLog("  Animationのパスに「../」は使用できません。");
-                            }
-                        }
-                    }
-                    //Animationの「../」検証
-                    Animation[] animations = obj.GetComponents<Animation>();
-                    if (animations.Length > 0)
-                    {
-                        AddResultLog(string.Format(" {0}", obj.name));
-                        foreach (Animation anim in animations)
-                        {
-                            foreach (var binding in AnimationUtility.GetCurveBindings(anim.clip))
-                            {
-                                var curve = AnimationUtility.GetEditorCurve(anim.clip, binding);
-                                if (binding.path.StartsWith("../"))
-                                {
-                                    dirtFlg = true;
-                                    AddResultLog("  Animationのパスに「../」は使用できません。");
-                                }
-                            }
-                        }
                     }
                 }
             }
