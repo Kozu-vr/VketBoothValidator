@@ -47,8 +47,13 @@ Occluder Static, Occludee Static, Dynamicの３つのEmptyオブジェクトを�
   - ブース寸法は幅4m×奥行き3m×高さ5m（初期表示でアクティブなブース内オブジェクトのBoundsが(X,Y,Z)=(4,5,3)以内）
   - マテリアル数制限10個以内（ブース内に設置するアバターのサンプル等全てを含む）（初期状態でアクティブなものをカウント）
 - G.Component規定
+  - 使用可能コンポーネントと使用条件のチェック
   - 初期表示されていないObjectには、ObjectSync設定不可
   - VRC_Pickupは最大3つまで
+  - RigidbodyはIs Kinematic推奨。Collision DetectionはDiscrete
+  - 各種JointはVRC_Object Syncとの併用は不可
+  - Lightの設定Baked推奨Real Timeで使いたい場合は応相談
+　- Animator/AnimationとVRC_PickupおよびVRC_ObjectSyncとAnimatorの併用は不可 「../」の使用不可
 
 ### 非対応ルール
 下記はツールでは検証できません。
