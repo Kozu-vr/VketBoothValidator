@@ -45,7 +45,7 @@ namespace VketTools
                 new WhitelistComponetReference("Cloth",new string[]{"UnityEngine.Cloth"},new string[]{"UnityEngine.SkinnedMeshRenderer"},WhitelistClass.ALLOW),
                 new WhitelistComponetReference("Joint",new string[]{"UnityEngine.CharacterJoint","UnityEngine.ConfigurableJoint","UnityEngine.FixedJoint","UnityEngine.HingeJoint","UnityEngine.SpringJoint"},new string[] { "UnityEngine.Rigidbody" },WhitelistClass.ALLOW),
                 new WhitelistComponetReference("Constant Force", new string[] { "UnityEngine.ConstantForce" }, new string[] { "UnityEngine.Rigidbody" }, WhitelistClass.ALLOW),
-                new WhitelistComponetReference("Collider",new string[]{"UnityEngine.SphereCollider","UnityEngine.BoxCollider","UnityEngine.SphereCollider","UnityEngine.CapsuleCollider","UnityEngine.MeshCollider"},new string[]{""},WhitelistClass.ALLOW),
+                new WhitelistComponetReference("Collider",new string[]{"UnityEngine.SphereCollider","UnityEngine.BoxCollider","UnityEngine.SphereCollider","UnityEngine.CapsuleCollider","UnityEngine.MeshCollider","UnityEngine.WheelCollider"},new string[]{""},WhitelistClass.ALLOW),
                 new WhitelistComponetReference("Dynamic Bone",new string[]{"DynamicBone"},new string[]{""},WhitelistClass.ALLOW),
                 new WhitelistComponetReference("Dynamic Bone Collider",new string[]{"DynamicBoneCollider"},new string[]{""},WhitelistClass.ALLOW),
                 new WhitelistComponetReference("Skinned Mesh Renderer",new string[]{"UnityEngine.SkinnedMeshRenderer"},new string[]{""},WhitelistClass.ALLOW),
@@ -58,7 +58,7 @@ namespace VketTools
                 new WhitelistComponetReference("Animator",new string[]{"UnityEngine.Animator"},new string[]{""},WhitelistClass.ALLOW),
                 new WhitelistComponetReference("Animation",new string[]{"UnityEngine.Animation"},new string[]{""},WhitelistClass.ALLOW),
                 new WhitelistComponetReference("Audio Source",new string[]{"UnityEngine.AudioSource"},new string[]{"ONSPAudioSource"},WhitelistClass.ALLOW),
-                new WhitelistComponetReference("Canvas",new string[]{"UnityEngine.Canvas"},new string[]{"UnityEngine.RectTransform"},WhitelistClass.ALLOW),
+                new WhitelistComponetReference("Canvas",new string[]{"UnityEngine.Canvas"},new string[]{"UnityEngine.RectTransform","UnityEngine.UI.CanvasScaler","UnityEngine.UI.GraphicRaycaster"},WhitelistClass.ALLOW),
                 new WhitelistComponetReference("uGUI+VRC_Ui Shape",new string[]{"VRCSDK2.VRC_UiShape","UnityEngine.UI.Text","UnityEngine.UI.Image","UnityEngine.UI.RawImage","UnityEngine.UI.Mask","UnityEngine.UI.RectMask2D","UnityEngine.UI.Button","UnityEngine.UI.InputField","UnityEngine.UI.Toggle","UnityEngine.UI.ToggleGroup","UnityEngine.UI.Slider","UnityEngine.UI.Scrollbar","UnityEngine.UI.Dropdown","UnityEngine.UI.ScrollRect","UnityEngine.UI.Selectable","UnityEngine.UI.Shadow","UnityEngine.UI.Outline","UnityEngine.UI.PositionAsUV1"},new string[]{""},WhitelistClass.ALLOW),
                 new WhitelistComponetReference("VRC_Panorama",new string[]{"VRCSDK2.scripts.Scenes.VRC_Panorama"},new string[]{"VRCSDK2.VRC_DataStorage"},WhitelistClass.NEGOTIABLE),
                 new WhitelistComponetReference("Camera",new string[]{"UnityEngine.Camera"},new string[]{""},WhitelistClass.NEGOTIABLE),
@@ -72,6 +72,12 @@ namespace VketTools
                 new WhitelistComponetReference("VRC_DataStorage",new string[]{"VRCSDK2.VRC_DataStorage"},new string[]{""},WhitelistClass.ALLOW),
                 new WhitelistComponetReference("VRC_EventHandler",new string[]{"VRCSDK2.VRC_EventHandler"},new string[]{""},WhitelistClass.ALLOW),
                 new WhitelistComponetReference("CanvasRenderer",new string[]{"UnityEngine.CanvasRenderer"},new string[]{""},WhitelistClass.ALLOW),
+                new WhitelistComponetReference("CanvasScaler",new string[]{"UnityEngine.UI.CanvasScaler"},new string[]{""},WhitelistClass.ALLOW),
+                new WhitelistComponetReference("GraphicRaycaster",new string[]{"UnityEngine.UI.GraphicRaycaster"},new string[]{""},WhitelistClass.ALLOW),
+                new WhitelistComponetReference("ReflectionProbe",new string[]{"UnityEngine.ReflectionProbe"},new string[]{""},WhitelistClass.ALLOW),
+                new WhitelistComponetReference("LightProbeGroup",new string[]{"UnityEngine.LightProbeGroup"},new string[]{""},WhitelistClass.ALLOW),
+                new WhitelistComponetReference("EventSystem",new string[]{"UnityEngine.EventSystems.EventSystem"},new string[]{""},WhitelistClass.ALLOW),
+                new WhitelistComponetReference("StandaloneInputModule",new string[]{"UnityEngine.EventSystems.StandaloneInputModule"},new string[]{""},WhitelistClass.ALLOW),
             };
         }
     }
