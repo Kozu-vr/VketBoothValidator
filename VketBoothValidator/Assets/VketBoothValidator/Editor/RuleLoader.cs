@@ -57,6 +57,7 @@ namespace VketTools
             new AnimatorRule(options),
             //Z
             new PickupObjectSyncPrefabRule(options),
+            new ObjectSwitchRule(options),
              };
             return rules.Concat(commonRules).ToArray();
         }
