@@ -47,9 +47,17 @@ namespace VketTools
             new NumberOfMaterialsRule(options),
             //F
             //G
+            new WhitelistComponentRule(options),
             new MonoBehaviorListRule(options),
             new ObjectSyncRule(options),
-            new PickupObjectRule(options)
+            new PickupObjectRule(options),
+            new RigidbodyRule(options),
+            new JointRule(options),
+            new LightRule(options),
+            new AnimatorRule(options),
+            //Z
+            new PickupObjectSyncPrefabRule(options),
+            new ObjectSwitchRule(options),
              };
             return rules.Concat(commonRules).ToArray();
         }
