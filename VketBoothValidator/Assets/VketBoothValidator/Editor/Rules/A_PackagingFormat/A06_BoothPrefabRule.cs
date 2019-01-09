@@ -77,7 +77,7 @@ namespace VketTools
         /// <summary>
         /// GameObject間でコンポーネントの増減をチェックする。
         /// 子オブジェクトに対して再帰的にチェックする。
-        /// true:コンポーネントに増減がある false:増減がない
+        /// true:コンポーネントに増減がある false:増減が一つもない
         /// </summary>
         private bool hasComponentChange(GameObject scencebooth, GameObject prefab)
         {
@@ -87,7 +87,7 @@ namespace VketTools
             }
             else
             {
-                //全ゲームオブジェクトについて
+                //子の順序は同一の前提で全ゲームオブジェクトについて再帰的にチェック
                 for (int i = 0; i < scencebooth.transform.childCount; i++)
                 {
                     if (hasComponentChange(scencebooth.transform.GetChild(i).gameObject, prefab.transform.GetChild(i).gameObject))
@@ -100,6 +100,10 @@ namespace VketTools
             }
         }
 
+        /// <summary>
+        /// GameObject間でコンポーネントの増減をチェックする。
+        /// true:コンポーネントに増減がある false:増減がない
+        /// </summary>
         private bool compareComponents(GameObject go1, GameObject go2)
         {
             //両方のコンポーネントをリスト化
