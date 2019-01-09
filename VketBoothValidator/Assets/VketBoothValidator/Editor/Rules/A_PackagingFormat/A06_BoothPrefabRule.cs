@@ -51,11 +51,10 @@ namespace VketTools
             else if (boothPrefabCount == 1)
             {
                 GameObject scencebooth = Utils.GetInstance().GetRootBoothObject();
-                PropertyModification[] modification = PrefabUtility.GetPropertyModifications(scencebooth);
                 if (scencebooth != null)
                 {
                     GameObject prefab = (GameObject)AssetDatabase.LoadAssetAtPath(prefabPath, typeof(GameObject));
-                    if (hasModification(scencebooth, modification) || hasAttachedChild(scencebooth) ||
+                    if (hasModification(scencebooth) || hasAttachedChild(scencebooth) ||
                         hasComponentChange(scencebooth, prefab))
                     {
                         AddResultLog("シーン内のブースはプレハブから構成が変更されています。プレハブを最新に作り直してください。");
@@ -155,8 +154,9 @@ namespace VketTools
 
         //prefabの構成オブジェクトに変更が加えられているかチェックする。
         //return true: 変更あり false:変更なし
-        private bool hasModification(GameObject booth, PropertyModification[] modification)
+        private bool hasModification(GameObject booth)
         {
+            PropertyModification[] modification = PrefabUtility.GetPropertyModifications(booth);
             List<string> propertyString = new List<string> { "m_LocalPosition.x", "m_LocalPosition.y", "m_LocalPosition.z", "m_LocalRotation.x", "m_LocalRotation.y", "m_LocalRotation.z", "m_LocalRotation.w", "m_RootOrder" };
             bool dirtFlg = false;
             foreach (PropertyModification pm in modification)
