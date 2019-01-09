@@ -138,6 +138,7 @@ namespace VketTools
 
 
         //ブースにprefabの構成物以外の子オブジェクトが追加されているかチェックする。
+        //return true: 追加あり false:追加なし
         private bool hasAttachedChild(GameObject scencebooth)
         {
             GameObject[] boothObjects = Utils.GetInstance().FindAllObjectsInBooth();
@@ -153,15 +154,16 @@ namespace VketTools
         }
 
         //prefabの構成オブジェクトに変更が加えられているかチェックする。
+        //return true: 変更あり false:変更なし
         private bool hasModification(GameObject booth, PropertyModification[] modification)
         {
             List<string> propertyString = new List<string> { "m_LocalPosition.x", "m_LocalPosition.y", "m_LocalPosition.z", "m_LocalRotation.x", "m_LocalRotation.y", "m_LocalRotation.z", "m_LocalRotation.w", "m_RootOrder" };
             bool dirtFlg = false;
             foreach (PropertyModification pm in modification)
             {
+                //modificatioinに必ず含まれるプロパティ（ルートの位置関係）か調べる
                 if (pm.target.name == booth.name)
                 {
-                    //必ず含まれるプロパティか調べる
                     if (propertyString.IndexOf(pm.propertyPath) == -1)
                     {
                         dirtFlg = true;
