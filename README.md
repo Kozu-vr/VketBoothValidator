@@ -62,6 +62,7 @@ Occluder Static, Occludee Static, Dynamicの３つのEmptyオブジェクトを�
 - ワールドアップロード時のサイズが10MB以内かは検証しません。
 - 名前が「CVS」のフォルダ、ファイル、「.」で始まるフォルダ、ファイルはチェックできません。
 - SetPass callsとBatchesの値は検証しません。
+- VRC_Triggerの設定値が使用可能なものかは検証対象外です。
 
 ## 動作環境
 以下の環境でテストしています。
