@@ -186,7 +186,7 @@ namespace VketTools
         private void OutError(string txt)
         {
             Debug.LogError(txt);
-            validationLog += "[!]" + txt + System.Environment.NewLine;
+            validationLog += System.Environment.NewLine + "[!]" + txt;
         }
         #endregion
     }
