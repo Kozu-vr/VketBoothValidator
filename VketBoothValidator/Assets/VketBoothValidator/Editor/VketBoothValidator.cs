@@ -95,7 +95,7 @@ namespace VketTools
             }
             else
             {
-                OutLog("Base folderを選択してください。");
+                OutError("Base folderを選択してください。");
                 return;
             }
             //Booth scene
