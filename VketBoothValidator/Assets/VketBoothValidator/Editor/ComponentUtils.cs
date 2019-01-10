@@ -78,6 +78,7 @@ namespace VketTools
                 new WhitelistComponetReference("LightProbeGroup",new string[]{"UnityEngine.LightProbeGroup"},new string[]{""},WhitelistClass.ALLOW),
                 new WhitelistComponetReference("EventSystem",new string[]{"UnityEngine.EventSystems.EventSystem"},new string[]{""},WhitelistClass.ALLOW),
                 new WhitelistComponetReference("StandaloneInputModule",new string[]{"UnityEngine.EventSystems.StandaloneInputModule"},new string[]{""},WhitelistClass.ALLOW),
+                new WhitelistComponetReference("VRC_SceneResetPosition",new string[]{"VRCSDK2.VRC_SceneResetPosition"},new string[]{""},WhitelistClass.ALLOW),
             };
         }
     }
