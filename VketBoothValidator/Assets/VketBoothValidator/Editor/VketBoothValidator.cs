@@ -80,6 +80,14 @@ namespace VketTools
             {
                 OnCopyResult();
             };
+            GUILayout.Space(5);
+            GUILayout.Box("", GUILayout.ExpandWidth(true), GUILayout.Height(1));
+            GUILayout.Label("Extra tool");
+            if (GUILayout.Button("Update booth prefab"))
+            {
+                OnUpdateBoothPrefab();
+            };
+            GUILayout.Space(15);
         }
         #endregion
 
@@ -152,6 +160,14 @@ namespace VketTools
         private void OnCopyResult()
         {
             EditorGUIUtility.systemCopyBuffer = validationLog;
+        }
+
+        ///<sammary>
+        ///ブースのプレハブをシーン中のブースで置換する。
+        ///</sammary>
+        private void OnUpdateBoothPrefab()
+        {
+            
         }
         #endregion
 
