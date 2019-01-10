@@ -9,8 +9,7 @@ Vケットのブースが入稿ルールに沿っているかチェックする�
 - このツールは非公式です。全ての場合においてバーチャルマーケット運営の判断が優先されます。
 
 ## インストール
-以下のURLからVketBoothValidator.zipをダウンロードし、解凍して中にあるUnitypackageを検証したいブースのシーンがあるプロジェクトにインポートしてください。
-ダウンロード先：https://github.com/Kozu-vr/VketBoothValidator/releases/
+[ダウンロードページ](https://github.com/Kozu-vr/VketBoothValidator/releases/) からVketBoothValidator.zipをダウンロードし、解凍して中にあるUnitypackageを検証したいブースのシーンがあるプロジェクトにインポートしてください。
 
 ## 使い方
 - ブースの作成配置を行いUnitypackageにエクスポートする直前の状態にします。
