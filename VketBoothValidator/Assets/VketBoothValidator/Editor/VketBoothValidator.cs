@@ -95,7 +95,7 @@ namespace VketTools
             }
             else
             {
-                OutLog("Select Base folder.");
+                OutLog("Base folderを選択してください。");
                 return;
             }
             //Booth scene
@@ -106,12 +106,12 @@ namespace VketTools
             }
             if (sceneGuids.Length == 0)
             {
-                OutError("Scene file not found.");
+                OutError("シーンファイルが見つかりません。");
                 return;
             }
             else if (sceneGuids.Length > 1)
             {
-                OutError(String.Format("{0} scene files found.", sceneGuids.Length));
+                OutError(String.Format("シーンファイルが複数見つかりました。：{0} ", sceneGuids.Length));
 
                 return;
             }
