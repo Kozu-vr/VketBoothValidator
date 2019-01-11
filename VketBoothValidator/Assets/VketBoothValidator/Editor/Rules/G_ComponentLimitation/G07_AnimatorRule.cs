@@ -52,7 +52,6 @@ namespace VketTools
                         {
                             foreach (var binding in AnimationUtility.GetCurveBindings(clip))
                             {
-                                var curve = AnimationUtility.GetEditorCurve(clip, binding);
                                 if (binding.path.StartsWith("../"))
                                 {
                                     dirtFlg = true;
