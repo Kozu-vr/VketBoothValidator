@@ -88,3 +88,4 @@ Kozu（Twitter：@kozu_vr）
 - 小熊猫レッキー(Twitter: @VR_Red_Panda)
 - sunafukin(Twitter: @sunafukin_vrc)
 - 円フツ
+- Karasuma-Kuro(Twitter: ＠Karasu_ma_Kuro)
