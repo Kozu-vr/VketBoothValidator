@@ -87,3 +87,4 @@ Kozu（Twitter：@kozu_vr）
 - がとーしょこら(Twitter: @gatosyocora)
 - 小熊猫レッキー(Twitter: @VR_Red_Panda)
 - sunafukin(Twitter: @sunafukin_vrc)
+- 円フツ
