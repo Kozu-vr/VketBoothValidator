@@ -1,4 +1,4 @@
-﻿Vket booth validator ver.2019.3-beta
+﻿Vket booth validator ver.2019.3a
 ====
 Vケットのブースが入稿ルールに沿っているかチェックする入稿支援ツール(非公式)です。
 
@@ -9,8 +9,7 @@ Vケットのブースが入稿ルールに沿っているかチェックする�
 - このツールは非公式です。全ての場合においてバーチャルマーケット運営の判断が優先されます。
 
 ## インストール
-検証したいブースのシーンがあるプロジェクトに以下のURLからダウンロードしたZipを解凍してUnitypackageをインポートしてください。
-ダウンロード先：https://github.com/Kozu-vr/VketBoothValidator/releases/
+[ダウンロードページ](https://github.com/Kozu-vr/VketBoothValidator/releases/) からVketBoothValidator.zipをダウンロードし、解凍して中にあるUnitypackageを検証したいブースのシーンがあるプロジェクトにインポートしてください。
 
 ## 使い方
 - ブースの作成配置を行いUnitypackageにエクスポートする直前の状態にします。
@@ -23,11 +22,10 @@ Vケットのブースが入稿ルールに沿っているかチェックする�
 
 ## 対応ルール
 検証に対応しているルール・非対応のルールは以下の通りです。
-各ルール対応の詳細は「Vket booth validator入稿ルール対応状況」を確認してください
+各ルール対応の詳細は[Vket booth validator 2019.3a入稿ルール対応表](https://docs.google.com/spreadsheets/d/1WX4HNmjex3cHBPx4fpwZaFDbMq92NqPiup3Mb02I-ZI/edit?usp=sharing)を確認してください
 
-Link:[Vket booth validator入稿ルール対応状況](https://docs.google.com/spreadsheets/d/1yLzcLtusEecXTSqYZu3RZLAwv17coyIo2IJ8L6couw0/edit?usp=sharing)
 
-基準は2018.12.26更新の「バーチャルマーケット２入稿ルール」です。
+基準は2019.1.1更新の「バーチャルマーケット２入稿ルール」です。
 使用前に公式のルールが改訂されていないことを確認してください。
 https://www.v-market.work/
 
@@ -38,6 +36,7 @@ https://www.v-market.work/
   - 提出フォルダ内に、フォルダ名と同名のブースのPrefabを作成すること
 - B.ファイル&フォルダ名
   - 全角禁止（2バイト文字を使用していないこと）
+  - 終わりの「~」禁止
   - あまりにも長すぎるパス名禁止（Assets以下が180文字以下と勝手に想定してます）
 - C.Scene内階層形式
   - 「サークル名_サークル主名」という名称のEmptyオブジェクトが全ての親
@@ -47,13 +46,23 @@ Occluder Static, Occludee Static, Dynamicの３つのEmptyオブジェクトを�
   - ブース寸法は幅4m×奥行き3m×高さ5m（初期表示でアクティブなブース内オブジェクトのBoundsが(X,Y,Z)=(4,5,3)以内）
   - マテリアル数制限10個以内（ブース内に設置するアバターのサンプル等全てを含む）（初期状態でアクティブなものをカウント）
 - G.Component規定
+  - 使用可能コンポーネントと使用条件のチェック
   - 初期表示されていないObjectには、ObjectSync設定不可
   - VRC_Pickupは最大3つまで
+  - RigidbodyはIs Kinematic推奨。Collision DetectionはDiscrete
+  - 各種JointはVRC_Object Syncとの併用は不可
+  - Lightの設定Baked推奨Real Timeで使いたい場合は応相談
+　- Animator/AnimationとVRC_PickupおよびVRC_ObjectSyncとAnimatorの併用は不可 「../」の使用不可
 
 ### 非対応ルール
+下記はツールでは検証できません。
+[ツールが検証できないルールのチェック方法](https://github.com/Kozu-vr/VketBoothValidator/wiki)を参考にチェックしてください。
 - 提出用UnityPackageの作成は検証の対象外です。不要な依存ファイルを含めないよう注意してください。
 - ペデスタルアバターに関する規定は検証対象外です。
 - ワールドアップロード時のサイズが10MB以内かは検証しません。
+- 名前が「CVS」のフォルダ、ファイル、「.」で始まるフォルダ、ファイルはチェックできません。
+- SetPass callsとBatchesの値は検証しません。
+- VRC_Triggerの設定値が使用可能なものかは検証対象外です。
 
 ## 動作環境
 以下の環境でテストしています。
@@ -66,7 +75,7 @@ Occluder Static, Occludee Static, Dynamicの３つのEmptyオブジェクトを�
 ## ライセンス
 MITライセンスの下でリリースされています。
 
-Copyright (c) 2018 Kozu
+Copyright (c) 2019 Kozu
 Released under the MIT license
 https://opensource.org/licenses/mit-license.php
 
@@ -78,3 +87,5 @@ Kozu（Twitter：@kozu_vr）
 - がとーしょこら(Twitter: @gatosyocora)
 - 小熊猫レッキー(Twitter: @VR_Red_Panda)
 - sunafukin(Twitter: @sunafukin_vrc)
+- 円フツ
+- Karasuma-Kuro(Twitter: ＠Karasu_ma_Kuro)

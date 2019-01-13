@@ -46,6 +46,11 @@ namespace VketTools
                             AddResultLog("ブース内に非表示のObjetSyncがあります");
                             AddResultLog(cmp.gameObject.name);
                         }
+                        if(cmp!= null && cmp.GetType().FullName == "VRCSDK2.VRC_ObjectSync" && cmp.gameObject.name != "Pickup")
+                        {
+                            dirtFlg = true;
+                            AddResultLog("公式プレハブ以外でObjectSyncを使用している可能性があります。運営に相談済みの場合はこのメッセージを無視してください。");
+                        }
                     }
                 }
             }

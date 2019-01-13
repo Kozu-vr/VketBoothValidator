@@ -59,10 +59,31 @@ namespace VketTools
 
                 foreach (Material material in renderer.sharedMaterials)
                 {
-                    if (material == null)
+                    if (renderer.GetType() != typeof(ParticleSystemRenderer) && material == null)
                     {
                         AddResultLog("Missingまたは未割当のマテリアルがみつかりました。:" + renderer.gameObject.name);
                         dirtFlg = true;
+                    }
+                    else if (renderer.GetType() == typeof(ParticleSystemRenderer))
+                    {
+                        ParticleSystemRenderer psr = renderer as ParticleSystemRenderer;
+                        //Materialの判定
+                        if (psr.sharedMaterials[0] != null)
+                        {
+                            allMaterials.Add(psr.sharedMaterials[0]);
+                        }
+                        else
+                        {
+                            AddResultLog("Missingまたは未割当のマテリアルがみつかりました。:" + renderer.gameObject.name);
+                            dirtFlg = true;
+                        }
+                        //Trail Materialの判定
+                        if (psr.sharedMaterials[1] != null)
+                        {
+                            allMaterials.Add(psr.sharedMaterials[1]);
+                        }
+                        //まとめて処理したので抜ける
+                        break;
                     }
                     else
                     {
