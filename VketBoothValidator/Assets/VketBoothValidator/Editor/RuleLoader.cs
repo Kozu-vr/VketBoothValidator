@@ -45,6 +45,7 @@ namespace VketTools
             //D
             new BoothSizeRule(options),
             new NumberOfMaterialsRule(options),
+            new TextureCompressionRule(options),
             //F
             //G
             new WhitelistComponentRule(options),
