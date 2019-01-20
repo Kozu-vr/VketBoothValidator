@@ -14,7 +14,7 @@ namespace VketTools
     /// B.ファイル&フォルダ名規定
     /// 08:「.blend」形式のファイル禁止
     /// </summary>
-    public class blenderFileRule : BaseRule
+    public class BlenderFileRule : BaseRule
     {
         public new string ruleName = "B08:Blenderファイル rule";
         public override string RuleName
@@ -24,7 +24,7 @@ namespace VketTools
                 return ruleName;
             }
         }
-        public blenderFileRule(Options _options) : base(_options)
+        public BlenderFileRule(Options _options) : base(_options)
         {
         }
         public override Result Validate()

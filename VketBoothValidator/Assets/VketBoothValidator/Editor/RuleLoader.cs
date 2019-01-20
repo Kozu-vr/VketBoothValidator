@@ -39,7 +39,7 @@ namespace VketTools
             new NonAlphabeticalCharactersRule(options),
             new FilenameEndWithTildeRule(options),
             new FilePathLengthRule(options),
-            new blenderFileRule(options),
+            new BlenderFileRule(options),
             //C
             new ObjectHierarchyRule(options),
             new StaticObjectRule(options),
