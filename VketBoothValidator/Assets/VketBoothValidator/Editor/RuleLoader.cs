@@ -39,12 +39,14 @@ namespace VketTools
             new NonAlphabeticalCharactersRule(options),
             new FilenameEndWithTildeRule(options),
             new FilePathLengthRule(options),
+            new BlenderFileRule(options),
             //C
             new ObjectHierarchyRule(options),
             new StaticObjectRule(options),
             //D
             new BoothSizeRule(options),
             new NumberOfMaterialsRule(options),
+            new TextureCompressionRule(options),
             //F
             //G
             new WhitelistComponentRule(options),
