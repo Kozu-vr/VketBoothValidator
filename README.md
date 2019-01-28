@@ -1,4 +1,4 @@
-﻿Vket booth validator 2019.3b
+﻿Vket booth validator 2019.3c
 ====
 Vケットのブースが入稿ルールに沿っているかチェックする入稿支援ツール(非公式)です。
 
@@ -22,7 +22,7 @@ Vケットのブースが入稿ルールに沿っているかチェックする�
 
 ## 対応ルール
 検証に対応しているルール・非対応のルールは以下の通りです。
-各ルール対応の詳細は[Vket booth validator 2019.3b入稿ルール対応表](https://docs.google.com/spreadsheets/d/1Ut1YIa41OGs0pjQotlkYXKF2H3I76xygBRHKfPb-3aI/edit?usp=sharing)を確認してください
+各ルール対応の詳細は[Vket booth validator 2019.3c入稿ルール対応表](https://docs.google.com/spreadsheets/d/1Aqqht6eiMuInPdtvmLVo9P152xdSX-EkSqN7S-QLm5U/edit?usp=sharing)を確認してください
 
 
 基準は2019.1.20更新の「バーチャルマーケット２入稿ルール」です。
