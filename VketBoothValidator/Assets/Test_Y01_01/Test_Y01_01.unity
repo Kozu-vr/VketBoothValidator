@@ -451,6 +451,7 @@ GameObject:
   - component: {fileID: 1140833159}
   - component: {fileID: 1140833158}
   - component: {fileID: 1140833157}
+  - component: {fileID: 1140833160}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -524,6 +525,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1140833155}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!111 &1140833160
+Animation:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1140833155}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 9621283d5953d284f9122b584fd8f8db, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 9621283d5953d284f9122b584fd8f8db, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1518167479
 GameObject:
   m_ObjectHideFlags: 0

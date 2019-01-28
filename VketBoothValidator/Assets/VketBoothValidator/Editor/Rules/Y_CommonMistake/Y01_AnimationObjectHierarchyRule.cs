@@ -35,18 +35,19 @@ namespace VketTools
             bool dirtFlg = false;
             GameObject occluderStatic = null;
             GameObject occludeeStatic = null;
-            GameObject boothRoot = Utils.GetInstance().GetRootBoothObject();
-            if (boothRoot.transform.Find("Occluder Static"))
-            {
-                occluderStatic = boothRoot.transform.Find("Occluder Static").gameObject;
-            }
-            if (boothRoot.transform.Find("Occludee Static"))
-            {
-                occludeeStatic = boothRoot.transform.Find("Occludee Static").gameObject;
-            }
 
-            if (occluderStatic != null && occludeeStatic != null)
+            GameObject boothRoot = Utils.GetInstance().GetRootBoothObject();
+            if (boothRoot != null)
             {
+                if (boothRoot.transform.Find("Occluder Static"))
+                {
+                    occluderStatic = boothRoot.transform.Find("Occluder Static").gameObject;
+                }
+                if (boothRoot.transform.Find("Occludee Static"))
+                {
+                    occludeeStatic = boothRoot.transform.Find("Occludee Static").gameObject;
+                }
+
                 foreach (GameObject obj in boothObjects)
                 {
                     AnimationClip[] clips = AnimationUtility.GetAnimationClips(obj);
@@ -72,7 +73,7 @@ namespace VketTools
                             GameObject go = obj;
                             while (go.transform.parent != null)
                             {
-                                if (go == occluderStatic || go == occludeeStatic)
+                                if ((occluderStatic != null && go == occluderStatic) || (occludeeStatic != null && go == occludeeStatic))
                                 {
                                     dirtFlg = true;
                                     AddResultLog(string.Format("アニメーションは{0}以下では使用できません。Dynamicに移動してください。:{1}", go.name, obj.name));
@@ -83,8 +84,6 @@ namespace VketTools
                     }
                 }
             }
-
-
             //検証結果を設定して返す(正常：Result.SUCESS 異常：Result.FAIL)
             return SetResult(!dirtFlg ? Result.SUCCESS : Result.FAIL);
         }
