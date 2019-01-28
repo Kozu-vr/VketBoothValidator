@@ -57,6 +57,8 @@ namespace VketTools
             new JointRule(options),
             new LightRule(options),
             new AnimatorRule(options),
+            //Y
+            new AnimationObjectHierarchyRule(options),
             //Z
             new PickupObjectSyncPrefabRule(options),
             new ObjectSwitchRule(options),
