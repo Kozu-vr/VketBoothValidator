@@ -61,7 +61,7 @@ namespace VketTools
                 {
                     if (renderer.GetType() != typeof(ParticleSystemRenderer) && material == null)
                     {
-                        AddResultLog("Missingまたは未割当のマテリアルがみつかりました。:" + renderer.gameObject.name);
+                        AddResultLog("次のオブジェクトにMissingまたは未割当のマテリアルがみつかりました。:" + renderer.gameObject.name);
                         dirtFlg = true;
                     }
                     else if (renderer.GetType() == typeof(ParticleSystemRenderer))
@@ -74,7 +74,7 @@ namespace VketTools
                         }
                         else
                         {
-                            AddResultLog("Missingまたは未割当のマテリアルがみつかりました。:" + renderer.gameObject.name);
+                            AddResultLog("次のオブジェクトにMissingまたは未割当のマテリアルがみつかりました。:" + renderer.gameObject.name);
                             dirtFlg = true;
                         }
                         //Trail Materialの判定
