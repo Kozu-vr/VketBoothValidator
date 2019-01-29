@@ -63,19 +63,19 @@ namespace VketTools
 
             AddResultLog("ブースのサイズ:" + boothBounds.size.ToString("f3"));
             bool dirtFlg = false;
-            if (boothBounds.size.x > maxBoundsSize.x)
+            if (boothBounds.size.x - maxBoundsSize.x >= 0.001f)
             {
-                AddResultLog(string.Format("幅(X)が{0}を{1:0.######}超えています。", maxBoundsSize.x, boothBounds.size.x - maxBoundsSize.x));
+                AddResultLog(string.Format("幅(X)が{0}を{1:0.###}超えています。", maxBoundsSize.x, boothBounds.size.x - maxBoundsSize.x));
                 dirtFlg = true;
             }
-            if (boothBounds.size.y > maxBoundsSize.y)
+            if (boothBounds.size.y - maxBoundsSize.y >= 0.001f)
             {
-                AddResultLog(string.Format("高さ(Y)が{0}を{1:0.######}超えています。", maxBoundsSize.y, boothBounds.size.y - maxBoundsSize.y));
+                AddResultLog(string.Format("高さ(Y)が{0}を{1:0.###}超えています。", maxBoundsSize.y, boothBounds.size.y - maxBoundsSize.y));
                 dirtFlg = true;
             }
-            if (boothBounds.size.z > maxBoundsSize.z)
+            if (boothBounds.size.z - maxBoundsSize.z >= 0.001f)
             {
-                AddResultLog(string.Format("奥行(Z)が{0}を{1:0.######}超えています。", maxBoundsSize.z, boothBounds.size.z - maxBoundsSize.z));
+                AddResultLog(string.Format("奥行(Z)が{0}を{1:0.###}超えています。", maxBoundsSize.z, boothBounds.size.z - maxBoundsSize.z));
                 dirtFlg = true;
             }
 
