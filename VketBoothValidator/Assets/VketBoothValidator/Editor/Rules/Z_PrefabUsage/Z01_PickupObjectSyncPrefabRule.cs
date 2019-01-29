@@ -8,6 +8,7 @@ namespace VketTools
     /// <summary>
     /// Z.公式プレハブのチェック
     /// 01.PickupObjectSyncPrefab（Animation版）のオーバーライド用のファイル複製チェック
+    /// "Pickup"オブジェクトとその親のScaleが一致しているかチェック
     /// </summary>
     public class PickupObjectSyncPrefabRule : BaseRule
     {
@@ -38,6 +39,7 @@ namespace VketTools
             {
                 foreach (GameObject obj in boothObjects)
                 {
+                    //ファイル複製チェック
                     Animator[] cmps = obj.GetComponents<Animator>();
 
                     foreach (Animator cmp in cmps)
@@ -47,6 +49,26 @@ namespace VketTools
                         {
                             dirtFlg = true;
                             AddResultLog(string.Format("アニメーションコントローラー{0}が複製されないまま使われています。", cmp.runtimeAnimatorController.name));
+                        }
+                    }
+                    //Scaleチェック
+                    if (obj.name == "Pickup" && obj.transform.parent != null)
+                    {
+                        Component[] mbs = obj.GetComponents(typeof(MonoBehaviour));
+
+                        foreach (Component cmp in mbs)
+                        {
+                            if (cmp != null && cmp.GetType().FullName.IndexOf("VRCSDK2.VRC_Pickup") >= 0)
+                            {
+                                Transform parentTransform = obj.transform.parent;
+
+                                if (parentTransform.localScale != obj.transform.localScale)
+                                {
+                                    dirtFlg = true;
+                                    AddResultLog(string.Format("公式プレハブの一番上の親オブジェクトと直下の'Pickup'はScaleが一致している必要があります。：{0}"
+                                        , parentTransform.gameObject.name));
+                                }
+                            }
                         }
                     }
                 }
