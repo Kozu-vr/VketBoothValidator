@@ -19,7 +19,7 @@ namespace VketTools
     /// </summary>
     public class StaticObjectRule : BaseRule
     {
-        public new string ruleName = "C01:Static設定 rule";
+        public new string ruleName = "C02:Static設定 rule";
         public override string RuleName
         {
             get
