@@ -55,6 +55,11 @@ Occluder Static, Occludee Static, Dynamicの３つのEmptyオブジェクトを�
   - 各種JointはVRC_Object Syncとの併用は不可
   - Lightの設定Baked推奨Real Timeで使いたい場合は応相談
   - Animator/AnimationとVRC_PickupおよびVRC_ObjectSyncとAnimatorの併用は不可 「../」の使用不可
+- Y.よくある入稿ミス
+  - Animatorで動かすオブジェクトはDynamicの下に配置すること
+- Z.公式プレハブ
+  - オーバーライド用のファイルを必ず複製すること
+  - PickupObjectSyncのプレハブの一番上の親オブジェクトと直下の"Pickup”のScaleが一致していること。
 
 ### 非対応ルール
 下記はツールでは検証できません。
