@@ -91,11 +91,11 @@ namespace VketTools
             OutLog(string.Format("Start vket booth validation. ({0})", version));
             if (baseFolder)
             {
-                OutLog("Base folder:" + baseFolder.name);
+                OutLog("Base Folder:" + baseFolder.name);
             }
             else
             {
-                OutError("Base folderを選択してください。");
+                OutError("Base Folderを選択してください。");
                 return;
             }
             //Booth scene
