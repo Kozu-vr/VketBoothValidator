@@ -71,14 +71,19 @@ namespace VketTools
                 }
             }
 
-            //'Occluder Static'以下のオブジェクト設定がすべて'Occluder Static'
+            //'Occluder Static'以下のオブジェクト設定がすべて'Static'設定になっている（Lightmap staticは考慮しない）
             if (occluderStatic != null)
             {
                 Transform[] childTransforms = occluderStatic.GetComponentsInChildren<Transform>();
                 foreach (Transform transform in childTransforms)
                 {
                     StaticEditorFlags flags = GameObjectUtility.GetStaticEditorFlags(transform.gameObject);
-                    if ((flags & StaticEditorFlags.OccluderStatic) == 0)
+                    if ((flags & StaticEditorFlags.OccluderStatic) == 0 ||
+                        (flags & StaticEditorFlags.OccludeeStatic) == 0 ||
+                        (flags & StaticEditorFlags.BatchingStatic) == 0 ||
+                        (flags & StaticEditorFlags.NavigationStatic) == 0 ||
+                        (flags & StaticEditorFlags.OffMeshLinkGeneration) == 0 ||
+                        (flags & StaticEditorFlags.ReflectionProbeStatic) == 0)
                     {
                         dirtflg = true;
                         inValidObjectName.Add(transform.name);
@@ -92,7 +97,8 @@ namespace VketTools
             }
             if (inValidObjectName.Count() > 0)
             {
-                AddResultLog("以下のOccluder Staticの設定ができていません");
+                AddResultLog("以下のStaticの設定ができていません。");
+                AddResultLog("特に理由がない場合は'Occluder Static'オブジェクト以下では全てのStaticをONにしてください。");
                 foreach (string name in inValidObjectName)
                 {
                     AddResultLog(" " + name);
@@ -127,7 +133,7 @@ namespace VketTools
                     AddResultLog(" " + name);
                 }
             }
-            //'Dynamic'以下のオブジェクト設定がすべて'Occluder Static','Occludee Static'ではない
+            //'Dynamic'以下のオブジェクト設定がすべて'Static'ではない
             inValidObjectName = new List<string>();
             if (dynamic != null)
             {
@@ -135,7 +141,13 @@ namespace VketTools
                 foreach (Transform transform in childTransforms)
                 {
                     StaticEditorFlags flags = GameObjectUtility.GetStaticEditorFlags(transform.gameObject);
-                    if ((flags & StaticEditorFlags.OccluderStatic) != 0 | (flags & StaticEditorFlags.OccludeeStatic) != 0)
+                    if ((flags & StaticEditorFlags.LightmapStatic) != 0 ||
+                        (flags & StaticEditorFlags.OccluderStatic) != 0 ||
+                        (flags & StaticEditorFlags.OccludeeStatic) != 0 ||
+                        (flags & StaticEditorFlags.BatchingStatic) != 0 ||
+                        (flags & StaticEditorFlags.NavigationStatic) != 0 ||
+                        (flags & StaticEditorFlags.OffMeshLinkGeneration) != 0 ||
+                        (flags & StaticEditorFlags.ReflectionProbeStatic) != 0)
                     {
                         dirtflg = true;
                         inValidObjectName.Add(transform.name);
@@ -149,7 +161,7 @@ namespace VketTools
             }
             if (inValidObjectName.Count() > 0)
             {
-                AddResultLog("Dynamic以下にはOccluder static,Occludee Staticを設定できません");
+                AddResultLog("Dynamic以下にはStaticを設定できません");
                 foreach (string name in inValidObjectName)
                 {
                     AddResultLog(" " + name);
