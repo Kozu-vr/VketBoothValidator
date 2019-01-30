@@ -1,4 +1,4 @@
-﻿Vket booth validator 2019.3b
+﻿Vket booth validator 2019.3c
 ====
 Vケットのブースが入稿ルールに沿っているかチェックする入稿支援ツール(非公式)です。
 
@@ -22,7 +22,7 @@ Vケットのブースが入稿ルールに沿っているかチェックする�
 
 ## 対応ルール
 検証に対応しているルール・非対応のルールは以下の通りです。
-各ルール対応の詳細は[Vket booth validator 2019.3b入稿ルール対応表](https://docs.google.com/spreadsheets/d/1Ut1YIa41OGs0pjQotlkYXKF2H3I76xygBRHKfPb-3aI/edit?usp=sharing)を確認してください
+各ルール対応の詳細は[Vket booth validator 2019.3c入稿ルール対応表](https://docs.google.com/spreadsheets/d/1Aqqht6eiMuInPdtvmLVo9P152xdSX-EkSqN7S-QLm5U/edit?usp=sharing)を確認してください
 
 
 基準は2019.1.20更新の「バーチャルマーケット２入稿ルール」です。
@@ -42,7 +42,7 @@ https://www.v-market.work/
 - C.Scene内階層形式
   - 「サークル名_サークル主名」という名称のEmptyオブジェクトが全ての親
 Occluder Static, Occludee Static, Dynamicの３つのEmptyオブジェクトを作り、すべてのオブジェクトはこのどれかの階層下に入れること（入っていないオブジェクトはログだけを出力してスルーします）
-  - 'Occluder Static'以下のオブジェクト設定が'Occluder Static'に、'Occludee Static'以下のオブジェクト設定が'Occludee Static'に設定されている。'Dynamic'以下ではどちらも設定されていない
+  - 'Occluder Static'以下のオブジェクト設定が全て'Static'(Lightmap Staticのみ任意)に、'Occludee Static'以下のオブジェクト設定が'Occludee Static'に設定されている。'Dynamic'以下では全てのStaticが設定されていない
 - D.ブース形式
   - ブース寸法は幅4m×奥行き3m×高さ5m（初期表示でアクティブなブース内オブジェクトのBoundsが(X,Y,Z)=(4,5,3)以内）
   - マテリアル数制限10個以内（ブース内に設置するアバターのサンプル等全てを含む）（初期状態でアクティブなものをカウント）
@@ -55,6 +55,11 @@ Occluder Static, Occludee Static, Dynamicの３つのEmptyオブジェクトを�
   - 各種JointはVRC_Object Syncとの併用は不可
   - Lightの設定Baked推奨Real Timeで使いたい場合は応相談
   - Animator/AnimationとVRC_PickupおよびVRC_ObjectSyncとAnimatorの併用は不可 「../」の使用不可
+- Y.よくある入稿ミス
+  - Animatorで動かすオブジェクトはDynamicの下に配置すること
+- Z.公式プレハブ
+  - オーバーライド用のファイルを必ず複製すること
+  - PickupObjectSyncのプレハブの一番上の親オブジェクトと直下の"Pickup”のScaleが一致していること。
 
 ### 非対応ルール
 下記はツールでは検証できません。
