@@ -42,7 +42,7 @@ https://www.v-market.work/
 - C.Scene内階層形式
   - 「サークル名_サークル主名」という名称のEmptyオブジェクトが全ての親
 Occluder Static, Occludee Static, Dynamicの３つのEmptyオブジェクトを作り、すべてのオブジェクトはこのどれかの階層下に入れること（入っていないオブジェクトはログだけを出力してスルーします）
-  - 'Occluder Static'以下のオブジェクト設定が'Occluder Static'に、'Occludee Static'以下のオブジェクト設定が'Occludee Static'に設定されている。'Dynamic'以下ではどちらも設定されていない
+  - 'Occluder Static'以下のオブジェクト設定が全て'Static'(Lightmap Staticのみ任意)に、'Occludee Static'以下のオブジェクト設定が'Occludee Static'に設定されている。'Dynamic'以下では全てのStaticが設定されていない
 - D.ブース形式
   - ブース寸法は幅4m×奥行き3m×高さ5m（初期表示でアクティブなブース内オブジェクトのBoundsが(X,Y,Z)=(4,5,3)以内）
   - マテリアル数制限10個以内（ブース内に設置するアバターのサンプル等全てを含む）（初期状態でアクティブなものをカウント）
