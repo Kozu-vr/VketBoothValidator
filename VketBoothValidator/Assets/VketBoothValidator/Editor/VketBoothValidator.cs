@@ -23,7 +23,7 @@ namespace VketTools
     public class VketBoothValidator : EditorWindow
     {
         //Valiables
-        private string version = "2019.3a";
+        private string version = "2019.3c";
         private string validationLog;
         private Vector2 scroll;
         private bool onoffBooth;
@@ -91,11 +91,11 @@ namespace VketTools
             OutLog(string.Format("Start vket booth validation. ({0})", version));
             if (baseFolder)
             {
-                OutLog("Base folder:" + baseFolder.name);
+                OutLog("Base Folder:" + baseFolder.name);
             }
             else
             {
-                OutError("Base folderを選択してください。");
+                OutError("Base Folderを選択してください。");
                 return;
             }
             //Booth scene

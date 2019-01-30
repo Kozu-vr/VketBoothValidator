@@ -31,12 +31,11 @@ namespace VketTools
         public override Result Validate()
         {
             base.Validate();
-            int expectedCount = 0;
 
             string[] guids1 = AssetDatabase.FindAssets("t:texture2D", new[] { AssetDatabase.GetAssetPath(options.baseFolder) });
             IEnumerable<string> dictinctGuids = guids1.Distinct();
             string assetPath;
-            List<string> invalidPath = new List<string>();
+            List<string> nonCrunchPath = new List<string>();
             List<string> highQualityPath = new List<string>();
             foreach (string guid in dictinctGuids)
             {
@@ -61,19 +60,19 @@ namespace VketTools
                         break;
                     case TextureFormat.DXT1://Crunch Compression設定のないRGBテクスチャ
                     case TextureFormat.DXT5://Crunch Compression設定のないRGBAテクスチャ
-                        invalidPath.Add(assetPath);
+                        nonCrunchPath.Add(assetPath);
                         break;
                     default:
-                        invalidPath.Add(assetPath);
+                        nonCrunchPath.Add(assetPath);
                         AddResultLog("不明なテクスチャフォーマット" + tex.name + " " + tex.format);
                         break;
                 }
             }
 
-            if (invalidPath.Count > 0)
+            if (nonCrunchPath.Count > 0)
             {
-                AddResultLog("`Use Crunch Compression`が設定されていないテクスチャ：" + invalidPath.Count);
-                foreach (string path in invalidPath.ToArray())
+                AddResultLog("`Use Crunch Compression`が設定されていないテクスチャ(強い推奨)：" + nonCrunchPath.Count);
+                foreach (string path in nonCrunchPath.ToArray())
                 {
                     AddResultLog(" " + path);
                 }
@@ -88,7 +87,7 @@ namespace VketTools
                 }
             }
 
-            return SetResult(invalidPath.Count == expectedCount ? Result.SUCCESS : Result.FAIL);
+            return SetResult(Result.SUCCESS);
         }
     }
 }
