@@ -133,7 +133,7 @@ namespace VketTools
                     AddResultLog(" " + name);
                 }
             }
-            //'Dynamic'以下のオブジェクト設定がすべて'Occluder Static','Occludee Static'ではない
+            //'Dynamic'以下のオブジェクト設定がすべて'Static'ではない
             inValidObjectName = new List<string>();
             if (dynamic != null)
             {
