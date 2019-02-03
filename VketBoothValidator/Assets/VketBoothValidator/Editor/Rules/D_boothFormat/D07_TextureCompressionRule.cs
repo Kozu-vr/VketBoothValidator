@@ -41,31 +41,34 @@ namespace VketTools
             {
                 assetPath = AssetDatabase.GUIDToAssetPath(guid);
                 Texture2D tex = AssetDatabase.LoadAssetAtPath<Texture2D>(assetPath);
-                switch (tex.format)
+                if (tex != null)
                 {
-                    case TextureFormat.DXT1Crunched://Crunch Compression設定のあるRGBテクスチャ
-                    case TextureFormat.DXT5Crunched://Crunch Compression設定のあるRGBAテクスチャ
-                    case TextureFormat.BC6H: //HDR画像の場合
-                    case TextureFormat.Alpha8: //Texture typeがSingle channelの場合
-                    case TextureFormat.RGB565: //RGB 16bit
-                    case TextureFormat.RGB24: //RGB 24bit
-                    case TextureFormat.ARGB4444: //ARGB 16bit
-                    case TextureFormat.RGBA32: //RGBA 32bit
-                    case TextureFormat.RGBAHalf: //RGBA Half
-                    case TextureFormat.BC4: //R Compressed BC4
-                    case TextureFormat.BC5: //RG Compressed BC5
-                        break;
-                    case TextureFormat.BC7: //High Quality設定の場合
-                        highQualityPath.Add(assetPath);
-                        break;
-                    case TextureFormat.DXT1://Crunch Compression設定のないRGBテクスチャ
-                    case TextureFormat.DXT5://Crunch Compression設定のないRGBAテクスチャ
-                        nonCrunchPath.Add(assetPath);
-                        break;
-                    default:
-                        nonCrunchPath.Add(assetPath);
-                        AddResultLog("不明なテクスチャフォーマット" + tex.name + " " + tex.format);
-                        break;
+                    switch (tex.format)
+                    {
+                        case TextureFormat.DXT1Crunched://Crunch Compression設定のあるRGBテクスチャ
+                        case TextureFormat.DXT5Crunched://Crunch Compression設定のあるRGBAテクスチャ
+                        case TextureFormat.BC6H: //HDR画像の場合
+                        case TextureFormat.Alpha8: //Texture typeがSingle channelの場合
+                        case TextureFormat.RGB565: //RGB 16bit
+                        case TextureFormat.RGB24: //RGB 24bit
+                        case TextureFormat.ARGB4444: //ARGB 16bit
+                        case TextureFormat.RGBA32: //RGBA 32bit
+                        case TextureFormat.RGBAHalf: //RGBA Half
+                        case TextureFormat.BC4: //R Compressed BC4
+                        case TextureFormat.BC5: //RG Compressed BC5
+                            break;
+                        case TextureFormat.BC7: //High Quality設定の場合
+                            highQualityPath.Add(assetPath);
+                            break;
+                        case TextureFormat.DXT1://Crunch Compression設定のないRGBテクスチャ
+                        case TextureFormat.DXT5://Crunch Compression設定のないRGBAテクスチャ
+                            nonCrunchPath.Add(assetPath);
+                            break;
+                        default:
+                            nonCrunchPath.Add(assetPath);
+                            AddResultLog("不明なテクスチャフォーマット" + tex.name + " " + tex.format);
+                            break;
+                    }
                 }
             }
 
