@@ -119,7 +119,7 @@ namespace VketTools
                             AddResultLog("ベースフォルダに含まれないマテリアルを参照しています。");
                             dirtFlg = true;
                         }
-                        string log = assetPath;
+                        string log = string.Format("{0} ({1})", assetPath, material.shader.name);
                         if (Path.GetExtension(assetPath).ToLower() == ".fbx")
                         {
                             log += string.Format(" ({0})", material.name);
